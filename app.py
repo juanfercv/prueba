@@ -1,11 +1,12 @@
-def sumar(a, b):
-    return a + b + 1
+from flask import Flask
+app = Flask(__name__)
 
-def restar(a, b):
-    return a - b
+@app.route("/")
+def index():
+    x, y = 5, 3
+    suma = x + y
+    resta = x - y
+    return f"Suma: {suma}, Resta: {resta}"
 
 if __name__ == "__main__":
-    x = 5
-    y = 3
-    print(f"La suma de {x} + {y} es:", sumar(x, y))
-    print(f"La resta de {x} - {y} es:", restar(x, y))
+    app.run(host="0.0.0.0", port=3000)
